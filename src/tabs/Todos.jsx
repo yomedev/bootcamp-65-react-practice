@@ -7,6 +7,7 @@ export class Todos extends Component {
   state = {
     todos: todos,
     search: '',
+    text: '',
   };
   handlerChangeSearch = e => {
     this.setState({ search: e.target.value });
@@ -20,6 +21,11 @@ export class Todos extends Component {
     return this.state.todos.filter(({ text }) =>
       text.toLowerCase().includes(this.state.search.toLowerCase())
     );
+  };
+  handleAddTodo = () => {
+    this.setState(prevState => ({
+      todos: [...prevState.todos, { text: prevState.text }],
+    }));
   };
   render() {
     const { todos } = this.state;
