@@ -17,11 +17,14 @@ import {
   TotalLabel,
   TotalValue,
 } from './ProductCart.styled';
+
 const ONE_PRODUCT_PRICE = 549;
+
 export class ProductCart extends Component {
   state = {
     counter: 1,
   };
+
   handlePlus = () => {
     this.setState(prevState => ({ counter: prevState.counter + 1 }));
   };
@@ -29,6 +32,7 @@ export class ProductCart extends Component {
   handleMinus = () => {
     this.setState(prevState => ({ counter: prevState.counter - 1 }));
   };
+
   handleUpdate = e => {
     const { name } = e.currentTarget;
     switch (name) {
@@ -41,24 +45,16 @@ export class ProductCart extends Component {
       default:
         return;
     }
-    // if (name === 'minus') {
-    //   this.setState(prevState => ({ counter: prevState.counter - 1 }));
-    // } else if (name === 'plus') {
-    //   this.setState(prevState => ({ counter: prevState.counter + 1 }));
-    // }
-    // this.setState(prevState => ({
-    //   counter:
-    //     e.currentTarget.name === 'minus'
-    //       ? prevState.counter - 1
-    //       : prevState.counter + 1,
-    // }))
   };
+
   getTotal() {
     return ONE_PRODUCT_PRICE * this.state.counter;
   }
+
   render() {
     const { counter } = this.state;
     const total = this.getTotal();
+
     return (
       <Section className="h-custom">
         <Title>Shopping Cart</Title>
